@@ -15,6 +15,7 @@ var app = {
     app.moveCounter();
     app.drawScore();
     app.control();
+    app.replay();
   },
   drawScore: function () {
     scoreElement = document.getElementById("score");
@@ -32,6 +33,17 @@ var app = {
       }
     });
   },
+  replay: function () {
+    var replay = document.querySelector(".replay");
+    replay.addEventListener("click", function (event) {
+      app.clearBoard();
+      app.player.x = 0;
+      app.player.y = 0;
+      app.gameOver = false;
+      app.counter = 0;
+      app.init();
+    });
+  },
   control: function () {
     var controlElement = document.getElementById("control");
     var turnLeft = document.querySelector(".btnLeft");
@@ -40,32 +52,32 @@ var app = {
 
     turnLeft.addEventListener("click", function (event) {
       if (app.gameOver) {
-        console.log("c'est fini wesh");
+        scoreElement.innerHTML =
+          "Bravo!! </br> Partie terminé en : " + app.counter;
       } else {
         turnLeft = app.turnLeft();
         app.counter++;
         scoreElement.innerHTML = "Nombres de mouvement : " + app.counter;
-        event.blur();
       }
     });
     turnForward.addEventListener("click", function (event) {
       if (app.gameOver) {
-        console.log("c'est fini wesh");
+        scoreElement.innerHTML =
+          "Bravo!! </br> Partie terminé en : " + app.counter;
       } else {
         turnForward = app.moveForward();
         app.counter++;
         scoreElement.innerHTML = "Nombres de mouvement : " + app.counter;
-        event.blur();
       }
     });
     turnRight.addEventListener("click", function (event) {
       if (app.gameOver) {
-        console.log("c'est fini wesh");
+        scoreElement.innerHTML =
+          "Bravo!! </br> Partie terminé en : " + app.counter;
       } else {
         turnRight = app.turnRight();
         app.counter++;
         scoreElement.innerHTML = "Nombres de mouvement : " + app.counter;
-        event.blur();
       }
     });
   },
