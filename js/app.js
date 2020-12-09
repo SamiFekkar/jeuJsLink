@@ -37,23 +37,36 @@ var app = {
     var turnLeft = document.querySelector(".btnLeft");
     var turnRight = document.querySelector(".btnRight");
     var turnForward = document.querySelector(".btnForward");
+
     turnLeft.addEventListener("click", function (event) {
-      turnLeft = app.turnLeft();
-      app.counter++;
-      scoreElement.innerHTML = "Nombres de mouvement : " + app.counter;
-      event.blur();
+      if (app.gameOver) {
+        console.log("c'est fini wesh");
+      } else {
+        turnLeft = app.turnLeft();
+        app.counter++;
+        scoreElement.innerHTML = "Nombres de mouvement : " + app.counter;
+        event.blur();
+      }
     });
     turnForward.addEventListener("click", function (event) {
-      turnForward = app.moveForward();
-      app.counter++;
-      scoreElement.innerHTML = "Nombres de mouvement : " + app.counter;
-      event.blur();
+      if (app.gameOver) {
+        console.log("c'est fini wesh");
+      } else {
+        turnForward = app.moveForward();
+        app.counter++;
+        scoreElement.innerHTML = "Nombres de mouvement : " + app.counter;
+        event.blur();
+      }
     });
     turnRight.addEventListener("click", function (event) {
-      turnRight = app.turnRight();
-      app.counter++;
-      scoreElement.innerHTML = "Nombres de mouvement : " + app.counter;
-      event.blur();
+      if (app.gameOver) {
+        console.log("c'est fini wesh");
+      } else {
+        turnRight = app.turnRight();
+        app.counter++;
+        scoreElement.innerHTML = "Nombres de mouvement : " + app.counter;
+        event.blur();
+      }
     });
   },
   drawBoard: function () {
