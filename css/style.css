@@ -1,0 +1,116 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  background: #ddd;
+  min-height: 100vh;
+}
+
+.board {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.cell {
+  height: 70px;
+  width: 70px;
+  border: 0.5px solid #333333;
+}
+.targetCell {
+  height: 70px;
+  width: 70px;
+  background: lawngreen;
+  border: 0.5px solid #333333;
+}
+
+.player {
+  background: url("../img/sprite.png");
+  background-size: 64.2px;
+  background-position: 2.5px 142px;
+  border: 0.5px solid #333333;
+  width: 70px;
+  height: 70px;
+}
+
+#score {
+  background: #333333;
+  text-align: left;
+  font-size: 1.5rem;
+  color: #f1f1f1;
+  border: 4px solid lawngreen;
+  width: 450px;
+  height: 100px;
+  padding: 20px 50px 5px 70px;
+}
+#control {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  background: #333333;
+  text-align: left;
+  font-size: 1.5rem;
+  color: #f1f1f1;
+  border: 4px solid lawngreen;
+  width: 450px;
+  height: 100px;
+  padding: 20px 50px 5px 70px;
+}
+
+.right {
+  /* transform: rotate(360deg); */
+  background-position: 2.5px 142px;
+}
+
+.down {
+  /* transform: rotate(90deg); */
+  background-position: 2.5px 288px;
+}
+
+.left {
+  /* transform: rotate(180deg); */
+  background-position: 2.5px 218px;
+}
+.up {
+  /* transform: rotate(270deg); */
+  background-position: 2.5px 68px;
+}
+
+.btn {
+  box-shadow: inset 0px 1px 3px 0px #91b8b3;
+  background: linear-gradient(to bottom, #768d87 5%, #6c7c7c 100%);
+  background-color: #768d87;
+  border-radius: 5px;
+  border: 1px solid #566963;
+  display: inline-block;
+  cursor: pointer;
+  color: #ffffff;
+  font-family: Arial;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 10px 20px;
+  margin: 4px 10px 10px;
+  text-decoration: none;
+  text-shadow: 0px -1px 0px #2b665e;
+}
+.btn:hover {
+  background: linear-gradient(to bottom, #6c7c7c 5%, #768d87 100%);
+  background-color: #6c7c7c;
+}
+.btn:active {
+  position: relative;
+  top: 1px;
+}
