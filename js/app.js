@@ -41,8 +41,7 @@ var app = {
 
     turnLeft.addEventListener("click", function (event) {
       if (app.gameOver) {
-        scoreElement.innerHTML =
-          "Bravo!! </br> Partie terminé en : " + app.counter;
+        console.log("fini");
       } else {
         turnLeft = app.turnLeft();
         app.counter++;
@@ -69,10 +68,6 @@ var app = {
         scoreElement.innerHTML = "Nombres de mouvement : " + app.counter;
       }
     });
-    if (app.gameOver) {
-      scoreElement.innerHTML =
-        "Bravo!! </br> Partie terminé en : " + app.counter;
-    }
   },
   drawBoard: function () {
     boardElement = document.getElementById("board");
@@ -104,7 +99,6 @@ var app = {
       document.querySelector(".player").style.backgroundPosition =
         "2.5px 142px";
     }
-    app.isGameOver();
   },
   clearBoard: function () {
     boardElement.innerHTML = "";
@@ -144,8 +138,7 @@ var app = {
   },
   moveForward: function () {
     if (app.gameOver) {
-      scoreElement.innerHTML =
-        "Bravo!! </br> Partie terminé en : " + app.counter;
+      console.log("fini");
     } else if (app.player.direction === "right" && app.player.y < 5) {
       app.player.y++;
     } else if (app.player.direction === "up" && app.player.x > 0) {
@@ -155,13 +148,13 @@ var app = {
     } else if (app.player.direction === "down" && app.player.x < 3) {
       app.player.x++;
     }
+    app.isGameOver();
     app.redrawBoard();
   },
   listenKeyboardEvents: function () {
     document.addEventListener("keyup", function (e) {
       if (app.gameOver) {
-        scoreElement.innerHTML =
-          "Bravo!! </br> Partie terminé en : " + app.counter;
+        console.log("fini");
       } else if (e.keyCode === 37) {
         app.turnLeft();
       } else if (e.keyCode === 39) {
@@ -170,15 +163,15 @@ var app = {
         app.moveForward();
       }
     });
-    if (app.gameOver) {
-      scoreElement.innerHTML =
-        "Bravo!! </br> Partie terminé en : " + app.counter;
-    }
   },
   isGameOver: function () {
-    if (app.player.x == app.targetCell.y && app.player.y == app.targetCell.x) {
+    var scoreElement = document.getElementById("score");
+    if (
+      app.player.x === app.targetCell.y &&
+      app.player.y === app.targetCell.x
+    ) {
       app.gameOver = true;
-      scoreElement = document.getElementById("score");
+      alert("Bravo!! Partie terminé en : " + (1 + app.counter));
       scoreElement.innerHTML =
         "Bravo!! </br> Partie terminé en : " + app.counter;
     }
@@ -187,8 +180,7 @@ var app = {
   moveCounter: function () {
     document.addEventListener("keyup", function (e) {
       if (app.gameOver) {
-        scoreElement.innerHTML =
-          "Bravo!! </br> Partie terminé en : " + app.counter;
+        console.log("fini");
       } else if (e.keyCode === 37) {
         app.counter++;
       } else if (e.keyCode === 39) {
@@ -200,13 +192,15 @@ var app = {
   },
 };
 
+document.addEventListener("DOMContentLoaded", app.init);
+
 var replay = document.querySelector(".replay");
 replay.addEventListener("click", function () {
   app.player.x = 0;
   app.player.y = 0;
   app.redrawBoard();
+  app.gameOver = false;
   app.counter = 0;
   scoreElement = document.getElementById("score");
   scoreElement.innerHTML = "Rejoins la zone verte";
 });
-document.addEventListener("DOMContentLoaded", app.init);
