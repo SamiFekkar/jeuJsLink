@@ -198,6 +198,7 @@ var replay = document.querySelector(".replay");
 replay.addEventListener("click", function () {
   app.player.x = 0;
   app.player.y = 0;
+  app.player.direction = "right";
   app.redrawBoard();
   app.gameOver = false;
   app.counter = 0;
